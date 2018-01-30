@@ -1,0 +1,27 @@
+@import '../node_modules/sass-bem/bem';
+
+@include b(image-index-justified) {
+  box-sizing: border-box;
+
+  @include before {
+    box-sizing: inherit;
+  }
+
+  @include after {
+    box-sizing: inherit;
+  }
+
+  * {
+    box-sizing: inherit;
+
+    &::before,
+    &::after {
+      box-sizing: inherit;
+    }
+  }
+
+  @include e(gallery) {
+    position: relative;
+    width: 100%;
+  }
+}

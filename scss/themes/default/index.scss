@@ -1,0 +1,48 @@
+@import '../../../node_modules/sass-bem/bem';
+
+$figure-background-color: #ccc;
+$caption-background-color: rgba(0, 0, 0, 0.85);
+$caption-foreground-color: #fff;
+
+@include b(image-index-justified-figure) {
+
+  $background-color: $figure-background-color;
+  overflow: hidden;
+
+  @include hover {
+    @include e(caption) {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 100ms 100ms ease-out, transform 200ms ease-out;
+    }
+  }
+
+  @include e(caption) {
+    background-color: $caption-background-color;
+    bottom: 0;
+    color: $caption-foreground-color;
+    font-size: 1.2rem;
+    left: 0;
+    opacity: 0;
+    padding: 1rem;
+    right: 0;
+    top: auto;
+    transform: translateY(100%);
+    transition: opacity 100ms 100ms ease-in, transform 200ms ease-in;
+  }
+
+  @include e(title) {
+    @include at(with-description) {
+      border-bottom: 1px solid darken($caption-foreground-color, 50%);
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+
+  @include e(description) {
+    @include at(with-title) {
+      font-size: 1rem;
+    }
+  }
+
+}

@@ -1,0 +1,33 @@
+@import '../node_modules/sass-bem/bem';
+
+@include b(image-index-justified-figure) {
+  display: block;
+  margin: 0;
+  position: absolute;
+
+  @include e(link) {
+    cursor: zoom-in;
+    display: block;
+    height: 100%;
+    position: relative;
+    width: 100%;
+  }
+
+  @include e(thumbnail) {
+    color: transparent;
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  @include e(caption) {
+    display: block;
+    position: absolute;
+    z-index: 2;
+  }
+
+}

@@ -1,0 +1,12 @@
+@import '../node_modules/sass-bem/bem';
+
+@import 'image-index-justified';
+@import 'image-index-justified-figure';
+
+@include t(default) {
+  @import 'themes/default/compiled';
+}
+
+@include t(shadow-box) {
+  @import 'themes/shadow-box/compiled';
+}

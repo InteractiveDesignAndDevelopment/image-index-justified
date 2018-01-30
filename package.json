@@ -1,0 +1,77 @@
+{
+  "name": "image-index-justified",
+  "version": "1.0.0",
+  "description": "Render handler for the Image Index standard CommonSpot element",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "prebuild:cf": "mkdirp dist/cf",
+    "prebuild:css": "mkdirp dist/css",
+    "prebuild:js": "mkdirp dist/js",
+    "prebuild": "run-s clean && run-p prebuild:*",
+    "build:cf": "cpy **/*.{cfc,cfm} ../dist/cf --cwd=cf --parents",
+    "build:css:theme-default:scss": "node-sass scss/themes/default/index.scss scss/themes/default/compiled.css",
+    "build:css:theme-default:postcss": "postcss scss/themes/default/compiled.css -u autoprefixer -o scss/themes/default/compiled.css",
+    "build:css:theme-default": "run-s build:css:theme-default:*",
+    "build:css:theme-shadow-box:scss": "node-sass scss/themes/shadow-box/index.scss scss/themes/shadow-box/compiled.css",
+    "build:css:theme-shadow-box:postcss": "postcss scss/themes/shadow-box/compiled.css -u autoprefixer -o scss/themes/shadow-box/compiled.css",
+    "build:css:theme-shadow-box": "run-s build:css:theme-shadow-box:*",
+    "build:css:core:scss": "node-sass scss/index.scss dist/css/image-index-justified.css",
+    "build:css:core:postcss": "postcss dist/css/image-index-justified.css -u autoprefixer -o dist/css/image-index-justified.css",
+    "build:css:core": "run-s build:css:core:*",
+    "build:css": "run-s build:css:*",
+    "build:js": "browserify js/index.js -o dist/js/image-index-justified.js -t [ babelify --presets [ latest ] ]",
+    "build:test:css:node-sass": "node-sass test/testing.scss test/testing.css",
+    "build:test:css:postcss": "postcss test/testing.css -u autoprefixer -o test/testing.css",
+    "build:test:css": "run-s build:test:css:*",
+    "build:test": "run-p build:test:*",
+    "build": "run-p build:* readme2html",
+    "postbuild:css:minify": "cssnano dist/css/image-index-justified.css dist/css/image-index-justified.min.css",
+    "postbuild:css:clean:theme-default": "rimraf scss/themes/default/compiled.css",
+    "postbuild:css:clean:theme-shadow-box": "rimraf scss/themes/shadow-box/compiled.css",
+    "postbuild:css:clean": "run-p postbuild:css:clean:*",
+    "postbuild:css": "run-p postbuild:css:*",
+    "postbuild:js": "babili dist/js/image-index-justified.js -o dist/js/image-index-justified.min.js",
+    "postbuild:test-dist": "cpy **/*.* ../test/dist --cwd=dist --parents",
+    "postbuild": "run-s postbuild:*",
+    "clean:dist": "rimraf dist && mkdirp dist",
+    "clean:test-dist": "rimraf test/dist && mkdirp test/dist",
+    "clean": "run-p clean:*",
+    "readme2html": "marked Readme.md > test/readme.html",
+    "test": "live-server test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://sayre_ts@bitbucket.org/sayre_ts/image-index-justified.git"
+  },
+  "keywords": [
+    "commonspot",
+    "render",
+    "handler",
+    "image",
+    "gallery"
+  ],
+  "author": {
+    "name": "Todd Sayre",
+    "email": "sayre_ts@mercer.edu"
+  },
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/sayre_ts/image-index-justified#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "babel-preset-latest": "^6.24.1",
+    "babelify": "^7.3.0",
+    "babili": "0.0.12",
+    "browserify": "^14.3.0",
+    "cpy-cli": "^1.0.1",
+    "cssnano-cli": "^1.0.5",
+    "marked": "^0.3.6",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^4.5.2",
+    "npm-run-all": "^4.0.2",
+    "postcss-cli": "^3.2.0",
+    "rimraf": "^2.6.1",
+    "sass-bem": "^2.6.5"
+  }
+}

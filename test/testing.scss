@@ -1,0 +1,31 @@
+.options {
+    background-color: #ddd;
+    box-sizing: border-box;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    width: calc(100% - 1rem);
+}
+
+.options * {
+    box-sizing: inherit;
+}
+
+.options-set {
+    display: flex;
+}
+
+.options-set:not(:last-of-type) {
+    margin-bottom: 0.5rem;
+}
+
+.options-label {
+    width: 8rem;
+}
+
+.options-field {
+    flex-grow: 1;
+}
+
+.options-field input {
+    width: 100%;
+}

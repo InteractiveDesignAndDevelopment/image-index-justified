@@ -1,0 +1,159 @@
+<h1 id="image-index-justified">Image Index Justified</h1>
+<p>A render handler for the CommonSpot standard element Image Index.</p>
+<p>A grid of photos where all the photos in a row are the same height and all the rows are around the same height.</p>
+<h2 id="installation">Installation</h2>
+<ul>
+<li>Copy the contents of the <code>dist</code> directory to your CommonSpot server<ul>
+<li><code>cf</code>, <code>css</code> and <code>js</code> directories</li>
+<li>Probably into the <code>_cs_resources</code> directory</li>
+<li>Probably to <code>&lt;your site&gt;/_cs_resources/image-index-justified</code></li>
+</ul>
+</li>
+<li>Add a render handler to the Image Index standard element<ul>
+<li>Probably named &ldquo;Justified&rdquo;</li>
+<li>Specify an explicit module</li>
+<li><code>&lt;dist&gt;/cf/image-index-justified.cfm</code></li>
+</ul>
+</li>
+<li>Register a resource for the JS and CSS used by this render handler<ul>
+<li>Probably name &quot;Image Index: Justified&quot;</li>
+<li>Early Loading<ul>
+<li>URL: <code>/&lt;dist&gt;/css/image-index-justified.min.css</code></li>
+<li>Type: <strong>StyleSheet</strong></li>
+<li>Combine: <strong>Ticked</strong></li>
+<li>Minify: <strong>Unticked</strong></li>
+</ul>
+</li>
+<li>Late Loading<ul>
+<li>URL: <code>/&lt;dist&gt;/js/image-index-justified.js</code></li>
+<li>Type: <strong>JavaScript</strong></li>
+<li>Combine: <strong>Ticked</strong></li>
+<li>Minify: <strong>Unticked</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="external-resources">External resources</h2>
+<p>All these resouces are assumed to be registered and are referred to in <code>&lt;dist&gt;/cf/image-index-justified.cfm</code></p>
+<h3 id="required">Required</h3>
+<ul>
+<li><a href="http://photoswipe.com/">PhotoSwipe</a><ul>
+<li><strong>Only</strong> the CSS files</li>
+<li><code>photoswipe.css</code></li>
+<li><code>default-skin.css</code><ul>
+<li><em>Or another skin</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://github.com/sh0ji/photoswiper">photoswiper</a></li>
+<li><a href="https://github.com/Sporkyy/justified-layout-browser">justified-layout-browser</a><ul>
+<li>In-browser implementation of <a href="https://github.com/flickr/justified-layout">Flickr&#39;s Justified Layout</a></li>
+</ul>
+</li>
+<li><a href="http://scottjehl.github.io/picturefill/">Picturefill</a></li>
+</ul>
+<h3 id="optional">Optional</h3>
+<ul>
+<li><a href="https://www.npmjs.com/package/babel-polyfill">babel-polyfill</a><ul>
+<li>IE support</li>
+</ul>
+</li>
+<li><a href="https://www.npmjs.com/package/polyfill-nodelist-foreach">polyfill-nodelist-foreach</a><ul>
+<li>For IE support</li>
+</ul>
+</li>
+<li><a href="https://www.npmjs.com/package/element-closest">element-closest</a><ul>
+<li>For IE support</li>
+</ul>
+</li>
+</ul>
+<h2 id="element-style">Element Style</h2>
+<p>The Justified Image Gallery is implemented as a Render Handler on the Image Index standard CommonSpot element.</p>
+<p>Customization is implemented through use of the styles on the subcomponents of the element.</p>
+<p><img src="./assets/images/element-indicator-style.png" alt="Style option"></p>
+<p><img src="./assets/images/element-style-edit.png" alt="Edit classes icon"></p>
+<p><img src="./assets/images/edit-element-component-style-other-classes.png" alt="Other Classes field"></p>
+<h2 id="style-options">Style Options</h2>
+<h3 id="image-index">Image Index</h3>
+<p>Themes will set groups of colors and sizes not easily set with individual classes</p>
+<ul>
+<li><code>background-color-&lt;hex&gt;</code><ul>
+<li>The background color behind all the photos.</p></li>
+<li><em>Use 3, 4, 6 or 8-digit hexadecimal notation without a pound sign.</em></li>
+</ul>
+</li>
+<li><code>full-width-breakout-row-cadence-&lt;boolean|integer&gt;</code><ul>
+<li>Insert a full width photo every <code>integer</code> rows.</li>
+<li>The photo on that row will be as wide as the width of the row and as tall as its aspect ratio.</li>
+<li><em>Only if that photo has an aspect ratio.</em></li>
+</ul>
+</li>
+<li><code>spacing-&lt;integer&gt;</code><ul>
+<li>Spacing around the photos.</li>
+<li><em>In pixels.</em></li>
+</ul>
+</li>
+<li><code>target-row-height-&lt;integer&gt;</code><ul>
+<li>Rows will be as close to <code>integer</code> high as possible.</li>
+<li><em>No guarantees.</em></li>
+<li><em>In pixels.</em></li>
+</ul>
+</li>
+<li><code>theme-default</code></li>
+<li><code>theme-shadow-box</code><ul>
+<li>Many drop shadows.</li>
+<li><em>Too many drop shadows, some might say.</em></li>
+</ul>
+</li>
+</ul>
+<h3 id="photo">Photo</h3>
+<ul>
+<li><code>caption-background-color-&lt;hex&gt;</code><ul>
+<li>The background color of the caption</li>
+<li><em>The caption will only be visible if either the title or description are visible.</em></li>
+<li><em>Use 3, 4, 6 or 8-digit hexadecimal notation without a pound sign.</em></li>
+</ul>
+</li>
+<li><code>spacing-&lt;integer&gt;</code><ul>
+<li>Spacing between the photos in pixels.</li>
+<li><em>In pixels.</em></li>
+</ul>
+</li>
+</ul>
+<h3 id="title">Title</h3>
+<ul>
+<li><code>color-&lt;hex&gt;</code><ul>
+<li>The color of the titular text.</li>
+<li><em>Use 3, 4, 6 or 8-digit hexadecimal notation without a pound sign.</em></li>
+</ul>
+</li>
+<li><code>size-&lt;integer&gt;</code><ul>
+<li>The size of the titular text.</li>
+<li><em>In pixels.</em></li>
+</ul>
+</li>
+<li><code>visible</code><ul>
+<li>Add a caption with a title to every image.</li>
+</ul>
+</li>
+</ul>
+<h3 id="description">Description</h3>
+<ul>
+<li><code>color-&lt;hex&gt;</code><ul>
+<li>The color of the descriptive text.</li>
+<li><em>Use 3, 4, 6 or 8-digit hexadecimal notation without a pound sign.</em></li>
+</ul>
+</li>
+<li><code>size-&lt;integer&gt;</code><ul>
+<li>The size of the descriptive text.</li>
+<li><em>In pixels.</em></li>
+</ul>
+</li>
+<li><code>visible</code><ul>
+<li>Add a caption with a description to every image.</li>
+</ul>
+</li>
+</ul>
+
